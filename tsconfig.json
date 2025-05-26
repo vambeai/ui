@@ -1,6 +1,7 @@
 {
   "extends": "@vambe/tsconfig/react-library.json",
   "compilerOptions": {
+    "jsx": "react",
     "verbatimModuleSyntax": false,
     "incremental": true,
     "composite": false,
