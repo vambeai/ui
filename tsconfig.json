@@ -1,0 +1,15 @@
+{
+  "extends": "@vambe/tsconfig/react-library.json",
+  "compilerOptions": {
+    "verbatimModuleSyntax": false,
+    "incremental": true,
+    "composite": false,
+    "baseUrl": ".",
+    "paths": {
+      "@ui/*": ["./src/*"]
+    },
+    "moduleResolution": "nodenext"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
