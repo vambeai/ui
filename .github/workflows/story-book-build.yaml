@@ -1,0 +1,17 @@
+name: Trigger Storybook Build
+on:
+  push:
+    branches: [main]
+jobs:
+  trigger-storybook-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Monorepo Storybook Build
+        env:
+          PAT: ${{ secrets.MONOREPO_PAT }}
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: token $PAT" \
+            https://api.github.com/repos/vambeai/monorepo-front/dispatches \
+            -d '{"event_type":"storybook-deploy","client_payload":{"ref":"${{ github.ref }}"}}'
