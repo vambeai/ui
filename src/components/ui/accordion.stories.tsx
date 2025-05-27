@@ -5,6 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from './accordion';
+import React from 'react';
 
 const meta: Meta<typeof Accordion> = {
   title: 'UI/Accordion',

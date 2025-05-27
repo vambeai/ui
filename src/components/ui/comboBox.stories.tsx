@@ -3,6 +3,7 @@ import { Globe } from 'lucide-react';
 import { useState } from 'react';
 import type { ComponentProps } from 'react';
 import { Combobox } from './comboBox';
+import React from 'react';
 
 const meta: Meta<typeof Combobox> = {
   title: 'UI/Combobox',
@@ -34,7 +35,7 @@ const ComboboxWithState = (
 };
 
 export const Default: Story = {
-  render: (args) => <ComboboxWithState {...args} />,
+  render: (args) => <ComboboxWithState {...args} value="" />,
   args: {
     value: '',
     options: frameworks,
@@ -43,7 +44,7 @@ export const Default: Story = {
 };
 
 export const WithInitialValue: Story = {
-  render: (args) => <ComboboxWithState {...args} />,
+  render: (args) => <ComboboxWithState {...args} value="next.js" />,
   args: {
     value: 'next.js',
     options: frameworks,
@@ -52,7 +53,7 @@ export const WithInitialValue: Story = {
 };
 
 export const WithIcon: Story = {
-  render: (args) => <ComboboxWithState {...args} />,
+  render: (args) => <ComboboxWithState {...args} value="" />,
   args: {
     value: '',
     options: frameworks,
@@ -63,7 +64,7 @@ export const WithIcon: Story = {
 };
 
 export const CustomWidth: Story = {
-  render: (args) => <ComboboxWithState {...args} />,
+  render: (args) => <ComboboxWithState {...args} value="" />,
   args: {
     value: '',
     options: frameworks,

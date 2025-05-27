@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from './select';
+import React from 'react';
 
 const meta: Meta<typeof Label> = {
   title: 'UI/Label',

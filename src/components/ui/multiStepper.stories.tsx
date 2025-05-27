@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Footprints, Home, Settings, User } from 'lucide-react';
 import { AnimatePresence } from 'motion/react';
@@ -123,7 +124,7 @@ export const WithAnimation: SidebarStory = {
           <div className="mt-8">
             <AnimatePresence mode="wait">
               <MultiStepperAnimationWrapper
-                key={currentStep}
+                keyString={currentStep.toString()}
                 direction={direction}
                 variant={animationVariant}
               >

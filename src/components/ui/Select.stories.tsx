@@ -11,6 +11,7 @@ import {
   SelectTriggerWithClear,
   SelectValue,
 } from './select';
+import React from 'react';
 
 const meta: Meta<typeof Select> = {
   title: 'UI/Select',

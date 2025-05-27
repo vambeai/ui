@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
 import { HorizontalDayPicker } from './horizontalDayPicker';
+import React from 'react';
 
 const meta: Meta<typeof HorizontalDayPicker> = {
   title: 'UI/HorizontalDayPicker',

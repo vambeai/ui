@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Mail, User, Users } from 'lucide-react';
-import type React from 'react';
+
+import React from 'react';
 import { useState } from 'react';
 import { MultiSelect } from './multiselect';
 
