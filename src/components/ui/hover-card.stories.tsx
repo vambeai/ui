@@ -6,6 +6,16 @@ const meta: Meta<typeof HoverCard> = {
   title: 'UI/HoverCard',
   component: HoverCard,
   tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
+  decorators: [
+    (Story) => (
+      <div className="flex items-center justify-center min-h-[200px] p-4">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;
@@ -17,7 +27,7 @@ export const Default: Story = {
       <HoverCardTrigger className="text-sm font-medium underline underline-offset-4">
         Hover me
       </HoverCardTrigger>
-      <HoverCardContent>
+      <HoverCardContent className="z-50">
         <div className="space-y-2">
           <h4 className="text-sm font-semibold">Hover Card Title</h4>
           <p className="text-sm text-muted-foreground">
@@ -36,7 +46,7 @@ export const WithCustomContent: Story = {
       <HoverCardTrigger className="text-sm font-medium underline underline-offset-4">
         Custom Content
       </HoverCardTrigger>
-      <HoverCardContent className="w-80">
+      <HoverCardContent className="w-80 z-50">
         <div className="flex justify-between space-x-4">
           <div className="space-y-1">
             <h4 className="text-sm font-semibold">Custom Layout</h4>
