@@ -1,14 +1,16 @@
-import { Input } from '@ui/components/ui/input';
-import {
+"use client";
+
+import { Input } from "@ui/components/ui/input";
+import React, {
   type ChangeEvent,
   type ComponentProps,
   forwardRef,
   useEffect,
   useState,
-} from 'react';
+} from "react";
 
 export interface ChileanRutInputProps
-  extends Omit<ComponentProps<'input'>, 'onChange' | 'value'> {
+  extends Omit<ComponentProps<"input">, "onChange" | "value"> {
   value?: string;
   onChange?: (value: string) => void;
   showValidationState?: boolean;
@@ -16,30 +18,30 @@ export interface ChileanRutInputProps
 
 export const formatRut = (value: string): string => {
   // Remove all non-alphanumeric characters
-  const cleaned = value.replace(/[^0-9kK]/g, '');
+  const cleaned = value.replace(/[^0-9kK]/g, "");
 
-  if (cleaned.length === 0) return '';
+  if (cleaned.length === 0) return "";
 
   // Extract verification digit (last digit)
   const verificationDigit = cleaned.slice(-1);
   const numbers = cleaned.slice(0, -1);
 
   // Format the numbers with dots
-  const formatted = numbers.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  const formatted = numbers.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
   // Add the hyphen and verification digit
   return `${formatted}-${verificationDigit}`;
 };
 
 export const cleanRut = (rut: string): string => {
-  return rut.replace(/[^0-9kK]/g, '');
+  return rut.replace(/[^0-9kK]/g, "");
 };
 
 export const validateRut = (rut: string): boolean => {
   if (!rut) return false;
 
   // Clean the RUT
-  const cleaned = rut.replace(/[^0-9kK]/g, '');
+  const cleaned = rut.replace(/[^0-9kK]/g, "");
 
   if (cleaned.length < 2) return false;
 
@@ -47,7 +49,7 @@ export const validateRut = (rut: string): boolean => {
   const dv = cleaned.slice(-1).toUpperCase();
 
   // Remove leading zeros
-  body = body.replace(/^0+/, '');
+  body = body.replace(/^0+/, "");
 
   if (body.length < 1) return false;
 
@@ -62,12 +64,12 @@ export const validateRut = (rut: string): boolean => {
   }
 
   const expectedDV = 11 - (sum % 11);
-  let expectedDVString = '';
+  let expectedDVString = "";
 
   if (expectedDV === 11) {
-    expectedDVString = '0';
+    expectedDVString = "0";
   } else if (expectedDV === 10) {
-    expectedDVString = 'K';
+    expectedDVString = "K";
   } else {
     expectedDVString = expectedDV.toString();
   }
@@ -80,8 +82,8 @@ export const ChileanRutInput = forwardRef<
   ChileanRutInputProps
 >(
   (
-    { value = '', onChange, showValidationState = false, className, ...props },
-    ref,
+    { value = "", onChange, showValidationState = false, className, ...props },
+    ref
   ) => {
     const [inputValue, setInputValue] = useState(value);
     const [isValid, setIsValid] = useState(false);
@@ -99,7 +101,7 @@ export const ChileanRutInput = forwardRef<
       const inputText = e.target.value;
 
       // Only process if input is empty or contains valid characters
-      if (inputText === '' || /^[0-9kK.\\-]*$/.test(inputText)) {
+      if (inputText === "" || /^[0-9kK.\\-]*$/.test(inputText)) {
         const formattedValue = formatRut(inputText);
         const isValidRut = validateRut(formattedValue);
 
@@ -115,11 +117,11 @@ export const ChileanRutInput = forwardRef<
     // Determine border color based on validation state
     const validationClassName = showValidationState
       ? isValid && inputValue
-        ? 'border-green-500 focus-visible:ring-green-500'
+        ? "border-green-500 focus-visible:ring-green-500"
         : inputValue
-          ? 'border-red-500 focus-visible:ring-red-500'
-          : ''
-      : '';
+        ? "border-red-500 focus-visible:ring-red-500"
+        : ""
+      : "";
 
     return (
       <Input
@@ -127,11 +129,11 @@ export const ChileanRutInput = forwardRef<
         value={inputValue}
         onChange={handleChange}
         placeholder="12.345.678-9"
-        className={`${validationClassName} ${className || ''}`}
+        className={`${validationClassName} ${className || ""}`}
         {...props}
       />
     );
-  },
+  }
 );
 
-ChileanRutInput.displayName = 'ChileanRutInput';
+ChileanRutInput.displayName = "ChileanRutInput";

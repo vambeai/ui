@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { cn } from '@ui/lib/utils';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import * as React from "react";
+import { cn } from "@ui/lib/utils";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export interface DayObject {
   date: Date;
@@ -19,7 +19,7 @@ interface DayPickerProps {
 }
 
 const formatDayName = (date: Date) => {
-  const days = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+  const days = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
   return days[date.getDay()];
 };
 
@@ -42,10 +42,10 @@ const DayButton = ({
     <button
       onClick={() => onDateSelect(date)}
       className={cn(
-        'flex flex-col items-center justify-center py-2 px-1 lg:px-4 rounded-full transition-colors w-10 md:w-14 disabled:opacity-50 disabled:cursor-not-allowed',
+        "flex flex-col items-center justify-center py-2 px-1 lg:px-4 rounded-full transition-colors w-10 md:w-14 disabled:opacity-50 disabled:cursor-not-allowed",
         isSelected
-          ? 'bg-primary text-primary-foreground'
-          : 'text-gray-600 hover:bg-gray-100 disabled:hover:bg-transparent dark:text-gray-400 dark:hover:bg-gray-900',
+          ? "bg-primary text-primary-foreground"
+          : "text-gray-600 hover:bg-gray-100 disabled:hover:bg-transparent dark:text-gray-400 dark:hover:bg-gray-900"
       )}
       type="button"
       disabled={!showDot && disableDate}
@@ -53,17 +53,17 @@ const DayButton = ({
       <span className="text-sm font-medium">{formatDayName(date)}</span>
       <span
         className={cn(
-          'text-xl font-semibold',
-          isToday && !isSelected && 'text-primary',
+          "text-xl font-semibold",
+          isToday && !isSelected && "text-primary"
         )}
       >
         {date.getDate()}
       </span>
       <span
         className={cn(
-          'h-[7px] w-[7px] mt-1 rounded-full',
-          !isSelected ? 'bg-primary' : 'bg-white',
-          showDot ? 'opacity-100' : 'opacity-0',
+          "h-[7px] w-[7px] mt-1 rounded-full",
+          !isSelected ? "bg-primary" : "bg-white",
+          showDot ? "opacity-100" : "opacity-0"
         )}
       />
     </button>
@@ -78,7 +78,7 @@ export function HorizontalDayPicker({
   handleNext,
   disableDate = false,
 }: DayPickerProps) {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = React.useRef<HTMLDivElement>(null);
 
   const isSelectedDate = (date: Date) => {
     return (
