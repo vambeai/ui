@@ -1,15 +1,31 @@
 {
-  "extends": "@vambe/tsconfig/react-library.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "React Library",
   "compilerOptions": {
-    "jsx": "react",
-    "verbatimModuleSyntax": false,
+    "declaration": true,
+    "declarationMap": true,
+    "allowJs": true,
+    "esModuleInterop": true,
     "incremental": true,
+    "isolatedModules": true,
+    "lib": ["es2022", "DOM", "DOM.Iterable"],
+    "module": "NodeNext",
+    "moduleDetection": "force",
+    "moduleResolution": "NodeNext",
+    "noUncheckedIndexedAccess": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES2022",
+    "verbatimModuleSyntax": false,
+    "noImplicitOverride": true,
+    "jsx": "react",
     "composite": false,
+    "sourceMap": true,
     "baseUrl": ".",
     "paths": {
       "@ui/*": ["./src/*"]
-    },
-    "moduleResolution": "nodenext"
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules"]
