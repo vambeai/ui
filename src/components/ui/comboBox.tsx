@@ -30,6 +30,7 @@ interface ComboboxProps {
   emptyMessage?: string;
   onClearSelected?: () => void;
   disabled?: boolean;
+  autoFocus?: boolean;
 }
 
 export function Combobox({
@@ -43,6 +44,7 @@ export function Combobox({
   emptyMessage = 'No results found.',
   disabled = false,
   onClearSelected,
+  autoFocus = false,
   ...props
 }: ComboboxProps) {
   const [open, setOpen] = React.useState(false);
@@ -76,7 +78,10 @@ export function Combobox({
           <ChevronDown className="ml-auto h-4 w-4 shrink-0 opacity-50 text-muted-foreground" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0">
+      <PopoverContent
+        className="w-[var(--radix-popover-trigger-width)] p-0"
+        onOpenAutoFocus={(e) => !autoFocus && e.preventDefault()}
+      >
         <Command>
           <CommandInput placeholder={searchPlaceholder} className="h-10" />
           <CommandList>
